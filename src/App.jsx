@@ -1,12 +1,13 @@
 import { useState } from "react";
 import Header from "./components/Header";
 import UserInputs from "./components/UserInputs";
+import Result from "./components/Result";
 
 export default function App() {
   const [userInputsData, setUserInputsData] = useState({
-    initialInvestment: 20000,
-    annualInvestment: 1000,
-    expectedReturn: 5,
+    initialInvestment: 15000,
+    annualInvestment: 1200,
+    expectedReturn: 6,
     duration: 10,
   });
 
@@ -14,7 +15,7 @@ export default function App() {
     setUserInputsData((prevState) => {
       return {
         ...prevState,
-        [modifiableInput]: newValue,
+        [modifiableInput]: +newValue,
       };
     });
   }
@@ -26,6 +27,7 @@ export default function App() {
         inputsValue={userInputsData}
         onModify={handleInputsDataChange}
       />
+      <Result inputsValue={userInputsData} />
     </>
   );
 }
